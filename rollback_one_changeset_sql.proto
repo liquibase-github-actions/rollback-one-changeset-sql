@@ -1,0 +1,37 @@
+syntax = "proto3";
+import public "global_options.proto";
+
+option go_package="./;proto";
+option java_package = "org.liquibase.grpc.proto";
+option java_multiple_files = true;
+option java_outer_classname = "RollbackOneChangesetSqlProto";
+
+package liquibase;
+
+service RollbackOneChangesetSqlService {
+  rpc execute(RollbackOneChangesetSqlRequest) returns (Response) {}
+}
+
+/* Rollback one changeset from the database */
+message RollbackOneChangesetSqlRequest {
+  string changelog_file = 1; // *required* The root changelog
+  optional string changeset_author = 2; // The author of the changeset to rollback
+  optional string changeset_id = 3; // The id of the changeset to rollback
+  optional string changeset_path = 4; // The target database password
+  optional string default_catalog_name = 5; // The default catalog name to use for the database connection
+  optional string default_schema_name = 6; // The default schema name to use for the database connection
+  optional string driver = 7; // The JDBC driver class
+  optional string driver_properties_file = 8; // The JDBC driver properties file
+  optional bool force = 9; // Flag which indicates you intend to use this feature
+  optional bool output_default_catalog = 10; // Control whether names of objects in the default catalog are fully qualified or not. If true they are. If false, only objects outside the default catalog are fully qualified
+  optional bool output_default_schema = 11; // Control whether names of objects in the default schema are fully qualified or not. If true they are. If false, only objects outside the default schema are fully qualified
+  optional string password = 12; // The target database password
+  optional string rollback_script = 13; // The path to the script to use to perform the rollback
+  string url = 14; // *required* The JDBC target database connection URL
+  optional string username = 15; // The target database username
+  liquibase.GlobalOptions global_options = 16;
+}
+
+message Response {
+  string message = 1;
+}
