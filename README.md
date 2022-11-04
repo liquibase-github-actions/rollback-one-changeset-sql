@@ -6,7 +6,7 @@ Rollback one changeset from the database
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/rollback-one-changeset-sql@v4.17.0
+- uses: liquibase-github-actions/rollback-one-changeset-sql@v4.17.1
   with:
     # The root changelog
     # string
@@ -95,7 +95,7 @@ The liquibase rollback one changeset sql action accepts all valid liquibase glob
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/rollback-one-changeset-sql@v4.17.0
+  - uses: liquibase-github-actions/rollback-one-changeset-sql@v4.17.1
     with:
       changelogFile: ""
       url: ""
