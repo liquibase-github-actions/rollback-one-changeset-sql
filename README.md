@@ -1,12 +1,12 @@
 # Liquibase Rollback One Changeset Sql Action
 Official GitHub Action to run Liquibase Rollback One Changeset Sql in your GitHub Action Workflow. For more information on how rollback one changeset sql works visit the [Official Liquibase Documentation](https://docs.liquibase.com/commands/home.html).
 ## Rollback One Changeset Sql
-[PRO] Rollback one changeset from the database
+[PRO] Generate the SQL to rollback one changeset from the database
 ## Usage
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/rollback-one-changeset-sql@v4.31.1
+- uses: liquibase-github-actions/rollback-one-changeset-sql@v4.32.0
   with:
     # The root changelog file
     # string
@@ -23,7 +23,7 @@ steps:
     # Required
     changesetId: ""
 
-    # The target database password
+    # The path relative to the root changelog of the changeset to rollback
     # string
     # Required
     changesetPath: ""
@@ -110,7 +110,7 @@ The liquibase rollback one changeset sql action accepts all valid liquibase glob
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/rollback-one-changeset-sql@v4.31.1
+  - uses: liquibase-github-actions/rollback-one-changeset-sql@v4.32.0
     with:
       changelogFile: ""
       changesetAuthor: ""
